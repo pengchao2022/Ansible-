@@ -1,0 +1,4 @@
+
+
+
+[root@centosa pengchao]# ansible all -a 'yum install -y pam-devel'
