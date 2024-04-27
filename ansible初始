@@ -1,0 +1,26 @@
+安装 Ansible
+
+yum install -y epel-release
+
+yum install ansible
+
+设置key 验证各个主机
+
+ssh-keygen
+
+enter
+enter
+
+ssh-copy-id 192.168.19.160
+ssh-copy-id 192.168.19.155
+ssh-copy-id 192.168.19.170
+
+编辑ansible host 文件，添加主机IP
+
+vim /etc/ansible/hosts
+
+使用ping 命令测试各个主机是不是在线 
+
+ansible all -m ping
+
+
