@@ -4,6 +4,10 @@ yum install -y epel-release
 
 yum install ansible
 
+统计Ansible有多少个模块
+
+ansible-doc -l | wc -l
+
 设置key 验证各个主机
 
 ssh-keygen
