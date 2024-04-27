@@ -1,0 +1,3 @@
+
+
+ansible all -a 'rpm -e --nodeps lftp'
