@@ -1,0 +1,44 @@
+创建 hosts 文件 位于别的目录如 /server/ansible/hosts
+
+mkdir -p /server/ansible/hosts
+
+切换到 hosts 文件所在目录里
+
+cd /server/ansible
+
+vim hosts
+分组
+[webservers]
+192.168.19.155
+[dbservers]
+192.168.19.180
+[nfsserver]
+192.168.19.160
+
+ansible -i hosts webservers -m ping      -----对hosts文件里 webservers 组进行 Ping命令 
+
+注意此处 -m 表示指定摸快 moudle 
+
+
+ansible -i hosts webservers -a 'yum update'   ---- 对hosts 文件里 webservers 组 用 yum 检查 更新
+
+注意 ： 此处 -a  是 执行某个动作 如 yum 软件安装等
+
+Ansible 可以给组进行划分子组 如 data 组下面有 nfsserver 和 dbservers 两个子组  
+
+[webservers]
+192.168.19.155
+[dbservers]
+192.168.19.180
+[nfsservers]
+192.168.19.160
+[data:children]
+nfsservers
+dbservers
+
+
+[root@centosa ansible]# ansible -i hosts data -m ping   对 data 组进行 Ping 
+
+
+
+
