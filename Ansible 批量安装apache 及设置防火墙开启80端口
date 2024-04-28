@@ -1,0 +1,23 @@
+
+
+---
+- name: Install apache server   # name of the playbook
+  hosts: webservers    # target group defined in the inventory file 
+  become: yes
+  tasks:
+    - name: install apache server   # name of the play
+      yum:
+        name: httpd
+        state: latest
+        update_cache: yes
+    - name: start and enable autostart of apache server
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: allow the tcp port 80 on firewall
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        immediate: yes
+        state: enabled 
