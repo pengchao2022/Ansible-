@@ -1,0 +1,17 @@
+
+在每个主机上面创建一个 /linux_c/c_language 文件夹
+
+---
+ - hosts: all
+   tasks:
+     - name: Create a directory named c_language in every host
+       shell: mkdir -p /linux_c/c_language
+
+
+在每个主机的c_language 文件夹里创建一个allen2024.sh 文件
+
+---
+ - hosts: all
+   tasks:
+     - name: Create a directory named allen2024.sh in every host
+       shell: touch /linux_c/c_language/allen2024.sh
