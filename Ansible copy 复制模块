@@ -1,3 +1,9 @@
 Ansible 复制文件到所有主机
 
 ansible all -m copy -a 'src=/files24/shellfiles/shell99.sh dest=/copytest/c1'
+
+
+将所有主机的host 文件统一一致，这样就可以解析每台主机了：
+
+ansible all -m copy -a 'src=/etc/hosts dest=/etc/hosts'
+
