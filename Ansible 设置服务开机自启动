@@ -1,4 +1,12 @@
-Ansible 给所有主机设置服务开机自启动：
+Ansible 给所有主机设置服务开机自启动：crond 服务
 
 ansible all -m systemd -a 'name=crond enabled=yes state=started'
+
+Ansible 给所有主机重新启动 crond 服务：
+
+ansible all -m systemd -a 'name=crond enabled=yes state=restarted'
+
+Ansible 给所有主机关闭 crond 服务：
+
+ansible all -m systemd -a 'name=crond enabled=yes state=stopped'
 
