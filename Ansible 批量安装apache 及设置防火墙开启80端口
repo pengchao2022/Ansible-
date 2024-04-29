@@ -1,4 +1,4 @@
-
+批量安装Apache
 
 ---
 - name: Install apache server   # name of the playbook
@@ -21,3 +21,17 @@
         permanent: yes
         immediate: yes
         state: enabled 
+
+
+批量卸载 Apache
+
+---
+- name: Remove  apache server   # name of the playbook
+  hosts: all    # target group defined in the inventory file 
+  become: yes
+  tasks:
+    - name: remove apache server   # name of the play
+      yum:
+        name: httpd
+        state: absent
+        update_cache: yes
