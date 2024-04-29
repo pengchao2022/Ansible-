@@ -1,0 +1,12 @@
+
+
+用Ansible 来创建新用户，并将用户添加到组里面：
+
+---
+ - hosts: all
+   tasks:
+     - name: groupadd
+       group: name=www gid=1999 state=present
+     - name: useradd
+       user: name=www uid=1999 group=www shell=/sbin/nologin create_home=no state=present
+
