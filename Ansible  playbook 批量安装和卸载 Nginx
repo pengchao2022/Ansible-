@@ -14,10 +14,19 @@
 
 批量卸载Nginx
 
+
 ---
 - hosts: all
   tasks:
+    - name: Stop Nginx servce on every host
+      service:
+          name: nginx
+          state: stopped
     - name: Remove Nginx Written by pengchao Ma
-      yum: name=nginx state=absent
+      yum:
+          name: nginx
+          state: absent
+
+
     
           
