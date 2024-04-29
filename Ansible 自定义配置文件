@@ -1,0 +1,29 @@
+Ansible 默认的配置文件为：/etc/ansible/ansible.cfg 
+
+如果 root 的家目录里没有自定义的配置文件，ansible 会使用默认的 /etc/ansible/ansible.cfg  配置文件。 ansible 默认的配置文件 优先级最低
+
+可以自定义ansible 的配置文件，然后放在/root 目录里
+
+如 ： vim /root/ansible.cfg 
+
+设置禁用 host key checking . 然后使用 root 的用户名和密码进行验证 
+
+[defaults]
+host_key_checking = false
+
+编辑 Hosts file 里面写上 root 的 用户名和密码 ：
+
+[webserver]
+192.168.19.190
+
+[all:vars]
+ansible_ssh_port=22
+ansible_ssh_user=root
+ansible_ssh_pass='Hellokity@20222022'
+~                                       
+
+测试能否ping 通 ：
+
+ansible -i hosts webserver -m ping
+
+
