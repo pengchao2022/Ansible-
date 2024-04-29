@@ -8,3 +8,7 @@ ansible all -m file -a 'path=/mapengchao/myfile/myshell.sh  state=touch'
 
 注意在创建文件之前，必须确保目录是已经建立好的 。
 
+ansible 创建软链接 Link file:
+
+ansible all -m file -a 'src=/cici/mycici/cicishell/cicishell.sh path=/cicishell.sh state=link'
+
