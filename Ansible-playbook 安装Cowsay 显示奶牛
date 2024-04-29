@@ -1,0 +1,61 @@
+ansible-playbook 在执行时显示奶牛 
+
+ yum install -y cowsay
+
+执行过程如下：
+
+ _____________________________
+< PLAY [Remove apache server] >
+ -----------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ ________________________
+< TASK [Gathering Facts] >
+ ------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [192.168.19.160]
+ok: [192.168.19.170]
+ok: [192.168.19.155]
+ok: [192.168.19.180]
+ok: [192.168.19.185]
+ok: [192.168.19.190]
+ _____________________________
+< TASK [remove apache server] >
+ -----------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+ok: [192.168.19.185]
+ok: [192.168.19.180]
+ok: [192.168.19.160]
+ok: [192.168.19.155]
+ok: [192.168.19.170]
+ok: [192.168.19.190]
+ ____________
+< PLAY RECAP >
+ ------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+192.168.19.155             : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+192.168.19.160             : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+192.168.19.170             : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+192.168.19.180             : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+192.168.19.185             : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+192.168.19.190             : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
