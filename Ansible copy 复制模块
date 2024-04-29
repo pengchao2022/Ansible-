@@ -7,3 +7,7 @@ ansible all -m copy -a 'src=/files24/shellfiles/shell99.sh dest=/copytest/c1'
 
 ansible all -m copy -a 'src=/etc/hosts dest=/etc/hosts'
 
+如果文件已经存在了，可以将之前的文件备份下，然后在复制： 设置参数： backup=yes
+
+ansible all -m copy -a 'src=/etc/hosts dest=/etc/hosts backup=yes'
+
