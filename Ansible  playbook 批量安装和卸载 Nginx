@@ -1,15 +1,22 @@
 批量安装Nginx
 
+
 ---
 - hosts: all
   tasks:
-    - name: install nginx Written by pengchao Ma
+    - name: install nginx
       yum: name=nginx state=latest
     - name: start nginx
       service:
           name: nginx
           state: started
           enabled: yes
+    - name: allow the tcp port 80 on firewall
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        immediate: yes
+        state: enabled
 
 
 批量卸载Nginx
