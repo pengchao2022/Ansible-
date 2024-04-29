@@ -1,0 +1,3 @@
+Ansible 复制文件到所有主机
+
+ansible all -m copy -a 'src=/files24/shellfiles/shell99.sh dest=/copytest/c1'
