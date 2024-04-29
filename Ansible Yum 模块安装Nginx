@@ -1,0 +1,5 @@
+
+Ansible Yum 模块安装 Nginx :
+
+
+ansible all -m yum_repository -a 'name="nginx-stable" description="ngx yum repo" baseurl=http://nginx.org/packages/centos/$releasever/$basearch/ enabled=1 gpgcheck=0 file=nginx'
