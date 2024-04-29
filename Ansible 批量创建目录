@@ -12,3 +12,16 @@ ansible 创建软链接 Link file:
 
 ansible all -m file -a 'src=/cici/mycici/cicishell/cicishell.sh path=/cicishell.sh state=link'
 
+给所有文件中写入Helloworld! ---注意这儿要用 Shell 模块
+
+ansible all -m shell -a 'echo Helloworld!>/winslate/file/directory1/myshell.sh'
+
+查看写入的内容：
+
+ ansible all -m shell -a 'cat /winslate/file/directory1/myshell.sh'
+
+
+
+
+
+
