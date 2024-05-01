@@ -1,0 +1,39 @@
+1， 在用户的家目录里创建 ansible 文件夹
+
+mkdir ~/ansible
+
+2, cd ansible
+
+3, 在ansible 文件夹里创建 ansible.cfg 配置文件
+
+vim ansible.cfg
+
+4, 编辑配置文件
+
+[defaults]
+inventory = ~/ansible/hosts  -----主机清单文件 hosts的位置
+forks=9                -----------ssh 并发数 自定义可以设置为9 有9台主机的话
+ask_pass=false         ----------- 询问密码设置为 false 不用密码验证 我们用ssh 秘钥验证就可以
+host_key_checking=false ---------- host key check 设置 为false ,不用再新主机出现后连接时提示 输入 yes or no
+
+5, 在 ansible 文件家里创建hosts 文件
+
+vim hosts
+
+6, 编辑 hosts 文件，添加组和主机
+
+[test]
+node1
+[proxy]
+node2
+[webserver]
+node[3:4]
+[database]
+node5
+[nlb]
+node6
+[cluster:children]
+webserver
+database
+
+
