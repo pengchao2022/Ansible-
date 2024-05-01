@@ -36,6 +36,23 @@ node6
 webserver
 database
 
+检查ansible 配置文件 可以用命令 ansible-config view
+
+ansible-config view
+
+[root@control ansible]# ansible-config view
+[defaults]
+inventory = ~/ansible/hosts
+forks=9
+ask_pass=false
+host_key_checking=false
+
+
+
+
+
+
+
 Ansible 配置文件的查找顺序
 
 1，首先检测 ansible_config 变量定义的配置文件
