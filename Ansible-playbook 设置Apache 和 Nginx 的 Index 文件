@@ -1,0 +1,46 @@
+****适用于Apach httpd webserver**********
+
+1， 首先在 ~/ansible 文件夹下面创建新的 template 文件夹
+
+mkdir ~/ansible/template
+
+2, 在template 文件夹里创建含有变量的 index 文件
+
+vim ~/ansible/template/index.html
+
+Welcome to {{ansible_hostname}} on {{ansible_ens33.ipv4.address}}.
+
+3, 在~/ansible 文件夹下面创建 apache_template.yaml 文件
+
+vim ~/ansible/apache_template.yaml
+
+4, 编辑yaml 文件：
+
+---
+ - hosts: node1
+   tasks:
+     - name: use template module to copy a file to webserver
+       template:
+         src: ~/ansible/template/index.html
+         dest: /var/www/html/index.html ---------------------- 注意 这是apache httpd 的 html 文件路径 和 nginx 的是不一样的
+
+5， ansible-playbook apache_template.yaml
+
+
+*************** 适用于 Nginx 的index 文件*********************
+
+1，在~/ansible 文件夹下面创建 nginx_template.yaml 文件
+
+2, 编辑 nginx_template.yaml 文件
+
+---
+ - hosts: node3
+   tasks:
+     - name: use template module to copy a file to webserver
+       template:
+         src: ~/ansible/template/index.html
+         dest: /usr/share/nginx/html/index.html ------------------ 注意这是 nginx 的 html 文件路径 和 apache 的是不一样的 
+
+
+
+
