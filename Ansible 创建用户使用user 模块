@@ -1,0 +1,15 @@
+ansible 使用user 模块来创建用户（不含密码）
+
+ansible test -m user -a "name=allen uid=1020 group=adm groups=daemon,root home=/home/allen"
+
+
+ansible 使用user 模块给用户创建密码（hash加密的密码）
+
+ansible test -m user -a "name=allen password={{'redhat'| password_hash('sha512')}}"
+
+下面使用ansible 来给创建用户Lily 同时创建加密的密码：
+
+ansible test -m user -a "name=lily password={{'redhat'| password_hash('sha512')}} uid=1200 group=adm groups=daemon,root home=/home/lily"
+
+
+
