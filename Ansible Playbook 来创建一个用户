@@ -1,0 +1,13 @@
+使用Ansible-playbook 来创建一个名为 phobe 的用户并加密密码：
+
+---
+ - hosts: all
+   tasks:
+     - name: create new user account 'phobe'
+       user:
+         name: phobe
+         uid: 1050
+         group: daemon
+         password: "{{'123' | password_hash('sha512')}}"
+
+
