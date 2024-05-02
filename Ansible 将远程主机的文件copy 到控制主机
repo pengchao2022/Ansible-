@@ -1,0 +1,6 @@
+Ansible 将远程Host 中的文件copy 到控制主机：
+
+ansible node1,node2,node3 -m fetch -a "src=/var/log/yum.log dest=~"
+
+ansible 将远程主机 node1,node2,node3 里面的yum log 文件copy 到 控制主机的root 家目录
+
