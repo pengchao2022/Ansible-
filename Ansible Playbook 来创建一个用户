@@ -23,6 +23,17 @@ Ansible 创建用户 并指定shell 类型和加入相应的group:
          password: "{{'123' | password_hash('sha512')}}"
 
 
+Ansible 中 将创建的用户 james 删除掉：
+
+---
+ - hosts: all
+   tasks: 
+     - name: Remove the account james
+       user:
+         name: james
+         state: absent
+
+
 
 
 
