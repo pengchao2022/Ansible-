@@ -11,5 +11,13 @@ ansible test -m user -a "name=allen password={{'redhat'| password_hash('sha512')
 
 ansible test -m user -a "name=lily password={{'redhat'| password_hash('sha512')}} uid=1200 group=adm groups=daemon,root home=/home/lily"
 
+使用ansible user 模块来删除远程主机上面的用户： 如删除用户testuser5
+
+ansible test -m user -a "name=testuser5 state=absent"
+
+如果还要删除用户的家目录 邮箱等 需要加remove=true 选项： 如删除allen 账户，同时删除家目录邮箱等：
+
+ansible test -m user -a "name=allen state=absent remove=true"
+
 
 
