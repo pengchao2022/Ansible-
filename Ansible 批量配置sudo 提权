@@ -1,0 +1,13 @@
+在所有主机上配置普通用户Alice 并有加密的密码
+
+ansible all -m user -a "name=alice password={{'123456'| password_hash('sha512')}}"
+
+
+在所有主机上给 普通用户winslate 赋予所有执行权限并免去密码 注意这里的ALL 都是大写的 ，不能小写
+
+ansible all -m lineinfile -a "path=/etc/sudoers line='winslate  ALL=(ALL)  NOPASSWD:ALL'"
+
+
+如果添加错误了，可以用 state=absent 参数来移除该行：
+
+ ansible all -m lineinfile -a "path=/etc/sudoers line='winslate  All=(ALL) NOPASSWD:ALL' state=absent" ----- 移除一行
