@@ -4,7 +4,7 @@
  - hosts: test
    tasks:
      - debug:
-         var: ansible_all_ipv4.addresses
+         var: ansible_all_ipv4_addresses
      - debug:
          msg: " the host name is:{{ansible_hostname}}"
      - debug:
