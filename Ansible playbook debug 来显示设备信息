@@ -1,0 +1,14 @@
+
+
+---
+ - hosts: test
+   tasks:
+     - debug:
+         var: ansible_all_ipv4.addresses
+     - debug:
+         msg: " the host name is:{{ansible_hostname}}"
+     - debug:
+         var: ansible_devices.sda.partitions.sda1.size
+     - debug:
+         msg: "the total memory is:{{ansible_memtotal_mb}}"
+
