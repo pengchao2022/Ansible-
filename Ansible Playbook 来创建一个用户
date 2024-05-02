@@ -10,4 +10,19 @@
          group: daemon
          password: "{{'123' | password_hash('sha512')}}"
 
+Ansible 创建用户 并指定shell 类型和加入相应的group:
+
+---
+ - hosts: all
+   tasks:
+     - name: create user account james with a bash shell and set bin and adm to user's groups
+       user:
+         name: james
+         shell: /bin/bash
+         groups: bin,adm
+         password: "{{'123' | password_hash('sha512')}}"
+
+
+
+
 
