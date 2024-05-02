@@ -1,0 +1,8 @@
+1， 使用ansible yum 模块安装httpd 服务：
+
+ansible test -m yum -a "name=httpd state=present"
+
+2， 使用 service 模块来开机启动或者立刻启动httpd 服务：
+
+ansible test -m service -a "name=httpd state=started enabled=yes"
+
