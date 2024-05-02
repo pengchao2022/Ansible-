@@ -1,0 +1,90 @@
+[root@control ansible]# ansible test --list-hosts
+  hosts (1):
+    node1
+[root@control ansible]# ansible test -m yum -a 'name=lvm2'
+node1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": false, 
+    "msg": "", 
+    "rc": 0, 
+    "results": [
+        "7:lvm2-2.02.187-6.el7.x86_64 providing lvm2 is already installed"
+    ]
+}
+[root@control ansible]# ansible test -m yum -a 'name=lvm2'
+node1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": false, 
+    "msg": "", 
+    "rc": 0, 
+    "results": [
+        "7:lvm2-2.02.187-6.el7.x86_64 providing lvm2 is already installed"
+    ]
+}
+[root@control ansible]# ansible test -m lvg -a "vg=myvg pvs=/dev/sdb1"
+node1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": true
+}
+[root@control ansible]# ansible test -m lvg -a "vg=myvg pvs=/dev/sdb1,/dev/sdb2"
+node1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": true
+}
+[root@control ansible]# ansible test -m lvol -a "lv=mylv vg=myvg size=0.9G"
+node1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": true, 
+    "msg": ""
+}
+[root@control ansible]# ansible test -m lvol -a "lv=mylv vg=myvg size=1.5G"
+node1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": true, 
+    "lv": "mylv", 
+    "size": 0.9, 
+    "vg": "myvg"
+}
+[root@control ansible]# ansible test -m lvol -a "lv=mylv vg=myvg state=absent"
+node1 | FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": false, 
+    "msg": "Sorry, no removal of logical volume mylv without force=yes."
+}
+[root@control ansible]# ansible test -m lvol -a "lv=mylv vg=myvg state=absent force=yes"
+node1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": true
+}
+[root@control ansible]# ansible test -m lvol -a "vg=myvg state=absent"
+node1 | FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": false, 
+    "msg": "one of the following is required: lv, thinpool"
+}
+[root@control ansible]# ansible test -m lvg -a "vg=myvg state=absent"
+node1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    }, 
+    "changed": true
+}
+[root@control ansible]# 
