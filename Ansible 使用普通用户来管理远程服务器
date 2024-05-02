@@ -1,0 +1,22 @@
+修改 ~/ansible/ansible.cfg 配置文件
+
+[defaults]
+inventory = ~/ansible/hosts
+forks=9
+ask_pass=false
+host_key_checking=false
+remote_user=winslate   ----------------  这样我们就可以使用 winslate 这一个普通用户来管理远程主机
+[privilege_escalation]
+become=True
+become_method=sudo
+become_user=root
+become_ask_pass=False
+
+给每一台远程主机配置ssh key 用于winslate 秘钥登录：
+
+for i in node1 node2 node3 node4 node5 node6 node7; do     ssh-copy-id winslate@$i; done
+
+依次输入完 winslate 的密码后即可免密登录各个主机
+
+
+
